@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Typewriter Effect</title>
+    <style>
+        .type_wrap {
+            display: inline;
+            white-space: pre;
+        }
+        .type_class {
+            display: inline;
+            animation: blink 1s step-end infinite;
+        }
+        @keyframes blink {
+            from, to {
+                visibility: hidden;
+            }
+            50% {
+                visibility: visible;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="Typewriter" data-testid="typewriter-wrapper">
+        <span class="type_wrap"></span>
+        <span class="type_class">|</span>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const typewriterWrapper = document.querySelector('[data-testid="typewriter-wrapper"] .type_wrap');
+            const text = "Welcome to the future of interactive content";
+            let index = 0;
+
+            function type() {
+                if (index < text.length) {
+                    typewriterWrapper.textContent += text.charAt(index);
+                    index++;
+                    setTimeout(type, 100); // Adjust the speed of typing here (milliseconds)
+                }
+            }
+
+            type();
+        });
+    </script>
+</body>
+</html>
